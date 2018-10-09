@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="user-info">
+    <block  a:if="{{userInfo.headimg && userInfo.headimg != ''}}">
+      <image src='{{userInfo.headimg}}'></image>
+    </block>
+    <block  a:elif="{{userInfo.headimg == '' || userInfo.headimg == null}}">
+      <image src="../../image/avatar_default_gray.png"></image>
+    </block>
+    <block  a:if="{{userInfo != null}}">
+      <text style='padding-top:8px;'>{{userInfo.nickname}}</text>
+      <text style='font-size:10pt;color:#555;font-weight:300;'>{{userInfo.mobile}}</text>
+    </block>
+    <block a:else="{{userInfo == null}}">
+      <text style='padding-top:8px;'>未登录</text>
+      <text onTap="gotoLogin" style='font-size:10pt;color:#555;font-weight:300;'>注册/登录</text>
+    </block>
+    
+        <!-- <text style='padding-top:8px;'>{{userInfo.nickname}}</text>
+        <text style='font-size:10pt;color:#555;font-weight:300;'>{{userInfo.mobile}}</text> -->
+  </view>
+  <view style='height:8px'></view>
+  <view class="line"></view>
+  <view class="gray_view"></view>
+  <view class="line"></view>
+  <view class='my_item' onTap="mianmi">
+     <image class='item_icon' src='../../image/ZHIFU.png'></image>
+     <text class='item_title'>免密支付</text>
+     <text class='item_subTitle' a:if="{{ifNonSecretPayment}}">已开通</text>
+     <text class='item_subTitle' a:if="{{!ifNonSecretPayment}}">未开通</text>
+     <image class='item_arrow' src='../../image/arrow.png'></image>
+    </view>
+    <view class='my_item' onTap="myOrder">
+     <image class='item_icon' style='width:14px' src='../../image/myorder.png'></image>
+     <text class='item_title'>我的订单</text>
+     <text class='item_subTitle'></text>
+     <image class='item_arrow' src='../../image/arrow.png'></image>
+    </view>
+    <view class='my_item last_item' onTap="myAppeal">
+     <image class='item_icon'  src='../../image/SHENSU.png'></image>
+     <text class='item_title'>我的申诉</text>
+     <text class='item_subTitle'></text>
+     <image class='item_arrow' src='../../image/arrow.png'></image>
+    </view>
+    <view class='bottomView' onTap="loginOut">{{userInfo?'退出':'登录'}}</view>
+</view>

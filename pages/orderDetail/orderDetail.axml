@@ -1,0 +1,67 @@
+<view a:if="{{orderData.goodsList.length>0}}" class="container">
+  <scroll-view scroll-y style="height:{{scroll_height}}px;">
+    <view class="header">
+      <view style='display:flex;flex-direction:row;margin:0px'>
+        <image style='margin-left:8px;margin-top:2px;width:25px;height:25px;' a:if="{{orderData.isCk=='1'}}" src="../../image/yellow_member.png" mode="aspectFit" />
+        <label class='header_title'>{{orderData.machineName}}</label>
+        <label class='header_status' style='color:{{orderData.orderState=="7"?"#009e96":"#ff0000"}}'>{{orderData.orderState=='7'?'已完成':(orderData.orderState=='4'?'待支付':(orderData.orderState=='6'?'扣款失败':'支付失败'))}}</label>
+      </view>
+      <view class='order_info'>
+        <label>{{"下单时间:"+orderData.orderTime}}</label>
+        <label>{{"订单编号:"+orderData.orderNo}}</label>
+      </view>
+      <view class='line'></view>
+    </view>
+    <block class="list" a:for="{{orderData.goodsList}}" a:key="{{orderData.goodsList}}">
+      <view id='{{item.goodsID}}' style='display:flex;height:{{image_width*0.76+16}}px;flex-direction:row;'>
+        <view style='width:{{image_width}}px;height:{{image_width*0.76}}px;margin:8px;'>
+          <image a:if="{{item.goodsImage == '' || item.goodsImage == null}}" class='item_image' style='width:{{image_width}}px;height:{{image_width*0.76}}px;border-radius:5px;' src='../../image/test.jpg'></image>
+          <image a:elif="{{item.goodsImage}}" mode='aspectFit' class='item_image' style='width:{{image_width}}px;height:{{image_width*0.76}}px;border-radius:5px;' src='{{item.goodsImage}}'></image>
+        </view>
+        <view style='justify-content:center;display:flex;width:50%;height:{{image_width*0.76}}px;margin:8px;flex-direction:column;'>
+          <label class='goods_info' style='color:#505050;font-size:11pt;'>商品:{{item.goodsName}}</label>
+          <label a:if="{{orderData.isCk=='1'&&item.memberPrice}}" class='goods_info' style='margin-top:8px;text-decoration:line-through'>售价:¥{{item.goodsOriginal}}</label>
+          <label class='goods_info' style='margin-top:8px'>{{(orderData.isCk=='1'&&item.memberPrice)?('会员价:¥'+item.memberPrice):('售价:¥'+item.goodsOriginal)}}</label>
+        </view>
+        <view style='width:15%;height:{{image_width*0.76}}px;display:flex;margin:8px;'>
+          <label class='goods_count' style='height:100%;line-height:{{image_width*0.76/2}}px'>x{{item.goodsNumber}}</label>
+        </view>
+      </view>
+      <view class='line'></view>
+    </block>
+    <block>
+      <view class='item-total'>
+        <view class='order_totalPrice'>共{{orderData.goodsNum}}件 总价:¥{{orderData.goodsPrice}}</view>
+        <!-- <view onTap='goAfterSell' class='afterSellBtn' a:if="{{orderData.orderState=='7'}}">申请售后</view> -->
+      </view>
+    </block>
+    <view class='gray_view'></view>
+    <block class="list" a:for="{{reduceList}}" a:key="{{reduceList}}">
+      <view id='{{item.goodsID}}' style='display:flex;height:17px;flex-direction:row;margin-left:8px;margin-top:15px;font-size:10pt;background-color:#fff;width:100%;'>
+        <view class='reduce_type'>{{item.type}}</view>
+        <view class='reduce_typeName'>{{item.typeName}}</view>
+        <view class='reduce_count'>{{item.reduceCount}}</view>
+      </view>
+    </block>
+    <!-- <view style="background-color:red;height:80px;"></view>
+    <view style="background-color:green;height:80px;"></view>
+    <view style="background-color:yellow;height:80px;"></view> -->
+  </scroll-view>
+  <view class='bottom_line'></view>
+  <view class='bottom_view'>
+    <view style='display:flex;flex-direction:column;height:100%;width:70%;'>
+      <view class='buttom_title' style='height:{{isMemberReduce?24:48.5}}px;line-height:{{isMemberReduce?33:48.5}}px'>实付金额:¥{{orderData.payAmount}}</view>
+      <view a:if="{{isMemberReduce}}" class='buttom_subTitle'>{{'会员节省:¥'+orderData.memberReduce}}</view>
+    </view>
+    <view onTap="zhifu" class='bottom_button'>{{orderData.orderState=='7'?'再来一单':(orderData.orderState=='4'?'去支付':'再次支付')}}</view>
+  </view>
+</view>
+<view class='nullView' a:elif="{{(!orderData.goodsList || orderData.goodsList.length<=0)&&isRequest==1}}">
+  <image class='nullImage' src="../../image/carnull.png" mode="aspectFit" />
+  <view class='repurchase' onTap="repurchase">重新购物</view>
+</view>
+<view class='netErrorView' a:else="{{(!orderData.goodsList || orderData.goodsList.length<=0)&&isRequest==2}}">
+  <image class='netErrorImage' src="../../image/netError.png" mode="aspectFit" />
+  <view style='margin-top:0px;color:#9B9B9B'>网络连接失败，请稍后重试</view>
+  <view class="reloadButton" onTap="reloadData">重新加载</view>
+</view>

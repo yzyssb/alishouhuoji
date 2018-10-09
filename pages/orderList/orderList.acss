@@ -1,0 +1,141 @@
+/* pages/orderList/orderList.wxss */
+.header-button{
+  width: 50%;
+  height: 47.5px;
+  text-align: center;
+  line-height:47.5px;
+  /* color: #585858; */
+}
+.green-line{
+  width: 25%;
+  height: 1.5px;
+  /* margin-top:48px; */
+  margin-left:12.5%;  
+  /* position: absolute; */
+  background-color:#009e96;
+}
+.line{
+  background-color: #ddd;
+  width: 100%;
+  height: 0.5px;
+}
+.header_title{
+  margin-left: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight:450;
+  font-size:11pt;
+  /* background-color: #ccc; */
+  width: 75%
+}
+.header_status{
+  text-align:right;
+   margin-top: 7px; 
+  font-size: small;
+   width: 20%; 
+  /* float: right; */
+  position:relative;
+   right:8px;
+}
+.goods_info{
+  font-size:11pt;
+  color: #a0a0a0;
+  margin: 2px;
+  font-weight:500;
+  /* height:33%; */
+  width:200px;
+  white-space:nowrap;
+}
+.goods_count{
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
+  font-size:10pt;
+  text-align:right;
+  /* background-color: red; */
+  height:100%;
+  width: 100%;
+  color: #a0a0a0;
+}
+
+.order-info{
+  text-align: left;
+  font-size:11pt;
+  color: #aaa;
+  font-weight:300;
+  margin-top:5px;
+  /* height:17.5px; */
+}
+.zhifu-button{
+  font-size:12pt;
+  width:25%;
+  height:35px;
+  border-radius:5px;
+  border-width:thin;
+  border-color: #009e96;
+  color: #009e96;
+  /* background-color: red; */
+  border-style: solid; 
+  text-align: center;
+  line-height: 35px;
+}
+.gray_view{
+  margin-top: 8px;
+  height: 8px;
+  width: 100%;
+  background-color: #EEEEEE;
+}
+.image_goods_count{
+  position: relative;  
+  width: 20%;
+  height: 15px;
+  text-align: center;
+  color: white;
+   left:79%; 
+  /* right:0px; */
+   /* bottom: 100%;  */
+  font-size: 9pt;
+  background-color:gray;
+  opacity:0.8;
+  line-height:15px;
+}
+.nullImage{
+  top: 20%;
+  left: 25%;
+  right:25%;
+  width: 50%;
+  height: 60%;
+  position: absolute;
+}
+ .nullView{
+   height: 100%;
+  width:100%; 
+  /* background-color:#000; */
+} 
+.netErrorImage{
+  margin-top: 40%;
+  width: 100px;
+  height: 100px;
+  /* position: absolute; */
+}
+ .netErrorView{
+   height: 100%;
+  width:100%; 
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content:flex-end;
+  /* background-color:#000; */
+} 
+.reloadButton{
+  /* background-color :red; */
+  color:#009e96;
+  margin-top: 20px;
+  width: 200px;
+  height: 40px;
+  line-height:40px;
+  text-align: center;  
+  border-width:0.5px;
+  border-color:#009e96;
+  border-radius: 5px;
+   border-style:solid;
+}

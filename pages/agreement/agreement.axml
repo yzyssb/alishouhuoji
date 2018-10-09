@@ -1,0 +1,6 @@
+<!--pages/agreement/agreement.wxml-->
+<view class="agreementBox">
+  <view a:for='{{dataDes}}' a:for-item="item" class="{{'type'+item.type}}">
+    {{item.content}}
+  </view>
+</view>

@@ -1,0 +1,80 @@
+<view class='header'>
+ <view class='step'>
+    <view class="step-num {{cur==0?'active':''}}">
+      <view class='sec'>
+        <view class='third'>1</view>
+      </view>
+    </view>
+    <text class='step-name'>选择商品</text>
+ </view>
+ <view class='line'></view>
+ <view class='step'>
+    <view class="step-num {{cur==1?'active':''}}">
+    <view class='sec'>
+        <view class='third'>2</view>
+      </view>
+    </view>
+    <text class='step-name'>选择售后类型</text>
+ </view>
+ <view class='line'></view>
+ <view class='step'>
+    <view class="step-num {{cur==2?'active':''}}">
+    <view class='sec'>
+        <view class='third'>3</view>
+      </view>
+    </view>
+    <text class='step-name'>上传图片</text>
+ </view>
+</view>
+<view class='step-one' a:if='{{cur===0}}'>
+  <scroll-view scroll-y>
+    <view class='goods-item' a:for='{{goodsList}}' a:for-item="item" a:for-index="index" a:key="index">
+      <image src='{{item.goodsImage}}' mode='aspectFit'></image>
+      <view class='goods-info'  >
+        <view class='name'>商品：{{item.goodsName}}</view>
+        <view class="old-price {{orderData.isCk=='1'&&item.memberPrice ?'line-through':''}}" >售价：{{item.goodsOriginal}}元</view>
+        <view class='new-price'a:if="{{(orderData.isCk=='1'&&item.memberPrice)}}">
+          <text>会员价：{{item.memberPrice}}元</text>
+          <text class='discount'>优惠:{{item.discount}}%</text>
+        </view>
+      </view>
+      <view class="icon {{item.choose?'cur':''}}" data-id="{{index}}" onTap='chooseGoods'></view>
+    </view>
+  </scroll-view>
+  <view class='bottom-group'>
+    <view class='no-goods-problem'>
+      <image src='../../image/empty.png' a:if='{{!noGoodsPromble}}' onTap='chooseNoGoods'></image>
+      <image src='../../image/blueCheck.png' a:if='{{noGoodsPromble}}' onTap='chooseNoGoods'></image>
+      <text>非商品问题请勾选</text>
+    </view>
+    <button class='one-next' onTap='oneNext'>下一步</button>
+  </view>
+</view>
+<view class='step-two' a:if='{{cur===1}}'>
+  <view class='issue-item' a:for="{{questionArr}}" a:for-item="item" a:for-index="index" a:key="index">
+    <text>{{item.question_title}}</text>
+    <text class='icon {{questionCurindex==index?"cur":""}}' data-id="{{index}}" onTap='chooseQuestion'></text>
+  </view>
+
+  <textarea class='desc' placeholder="请输入问题描述" auto-focus placeholder-style="font-size:25rpx" a:if='{{showTextarea}}' onInput='inputContent' value="{{question_content}}" />
+  <view class='btn-group'>
+    <button class='two-prev' onTap='twoPrev'>上一步</button>
+    <button class='two-next' onTap='twoNext'>下一步</button>
+  </view>
+</view>
+<view class='step-three' a:if='{{cur===2}}'>
+  <view class='image-box'>
+    <block a:if="{{imgList.length>0}}">
+      <view class='one-img' a:for="{{imgList}}"  a:key="{{index}}">
+        <image  src="{{item}}"  class='pic'></image>
+        <image src='../../image/img_del.png' class='img_del' onTap='delImg' data-id='{{index}}'></image>
+      </view>
+    </block>
+    <view class='one-img'>
+      <image src='../../image/add_image.png' onTap='chooseWxImage' class='pic'></image>
+    </view>
+  </view>
+  <view class='btn-group'>
+    <button class='three-btn' onTap='submit'>确认提交</button>
+  </view>
+</view>

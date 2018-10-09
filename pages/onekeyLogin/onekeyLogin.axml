@@ -1,0 +1,5 @@
+<view class="container">
+  <image style='width:100%;height:210px;margin-top:30px;' src="../../image/login.png" mode="aspectFill" />
+  <view style="margin-left:15%;margin-top:20px;width:70%;text-align:center; height:40px;line-height:40px;color:white;background-color:#009e96" onTap="onkeyLogin">支付宝用户一键登录</view>
+  <view style="margin-left:15%;margin-top:15px;width:70%;text-align:center; color:#2783F6;" onTap="gotomobileLogin">输入手机号注册/登录</view>
+</view>

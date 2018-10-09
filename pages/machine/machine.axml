@@ -1,0 +1,4 @@
+<view class="container">
+      <image class="container" onTap="toscan" src="/image/app_home.png" mode="widthFix" class="bg" onError="imageError" onLoad="imageLoad"/>
+      <!-- <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">跳转到新页面</navigator> -->
+</view>

@@ -1,0 +1,58 @@
+<view class='myorder-header'>
+  <view class='myorder-tab'>
+    <view class="weui-navbar">
+      <block a:for="{{tabs}}" a:key="index" a:index="{{index}}">
+        <view class="weui-navbar__item {{item.after_stare == after_state ? 'weui-bar__item_on' : ''}}" data-id='{{item.after_stare}}' onTap="tabClick" data-state='{{item.after_stare}}'>
+          <view class="weui-navbar__title">{{item.name}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!--tab切换结束  -->
+</view>
+<scroll-view class='order-list'>
+  <view class='order-item' a:for="{{appealList}}"  a:key="{{index}}">
+    <view class='item-tit'>
+      <view class='machine-name'>
+        <image src='../../image/yellow_member.png' mode='aspectFit' a:if='{{item.is_ck}}'></image>
+        <text>{{item.machine_name}}</text>
+      </view>
+      <view class='state'>{{item.after_state==1?'待处理':(item.after_state==2?'待处理':(item.after_state==3?'已完成':''))}}</view>
+    </view>
+    <view class='item-image-list'>
+      <image a:if="{{item.oss_pic_url1}}" src='{{item.oss_pic_url1}}' mode='aspectFit'></image>
+      <image a:if="{{item.oss_pic_url2}}" src='{{item.oss_pic_url2}}' mode='aspectFit'></image>
+      <image a:if="{{item.oss_pic_url3}}" src='{{item.oss_pic_url3}}' mode='aspectFit'></image>
+    </view>
+    <view class='item-info'>
+      <view class='info-line'>
+        <text class='info-tit'>申诉时间：</text>
+        <text>{{item.create_time}}</text>
+      </view>
+      <view class='info-line'>
+        <text class='info-tit'>订单编号：</text>
+        <text>{{item.order_no}}</text>
+      </view>
+      <view class='info-line'>
+        <text class='info-tit'>申诉商品件数：</text>
+        <text>{{item.goods_num}}件</text>
+      </view>
+      <view class='info-line'>
+        <text class='info-tit'>申诉商品支付金额：</text>
+        <text>{{item.pay_amount}}元</text>
+      </view>
+      <view class='info-line' >
+        <text class='info-tit'>申诉原因：</text>
+        <text>{{item.question_title=='其他问题'?item.question_content:item.question_title}}</text>
+      </view>
+      <view class='info-line'>
+        <text class='info-tit'>申诉状态：</text>
+        <text >{{item.after_result==0?'等待处理':(item.after_result==1?'同意退款':(item.after_result==2?'拒绝申诉':''))}}</text>
+      </view>
+      <view class='info-line' a:if="{{item.refund_no}}">
+        <text class='info-tit'>退款单号：</text>
+        <text>{{item.refund_no}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>

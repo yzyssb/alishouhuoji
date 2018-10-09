@@ -1,0 +1,87 @@
+
+<view class="container">
+<image  class="backgroundImage" src='{{backgroundImage}}'/>
+<view  class='back_view' >    
+    <image src={{isMember?'../../image/member.png':''}} class='icon_image' mode='aspectFit'></image>
+       <!--  -->
+    <view class='followSwiper' a:if="{{(isRequestSuccess&&!isPermission)}}" >
+      <view class='welcomeName'>
+        {{userInfo && ("欢迎"+ ((userInfo.nickname&&userInfo.nickname!=null)?userInfo.nickname:userInfo.mobile))}}
+      </view>
+      <view class='welcomeDes'>以下任何一种方式都可购物</view>
+    </view>
+
+    <view class="text-view">
+    <label class='welcom_label'>{{userInfo?((isMember?'欢迎尊贵的路上会员“':'欢迎“')+ ((userInfo.nickname&&userInfo.nickname!=null)?userInfo.nickname:userInfo.mobile) +'”'):'欢迎来到“路上会员柜”'}}</label>
+    <label class='welcom_label2'>{{dateStr}}</label>
+    </view>
+    
+    <view hidden={{isHidden}} a:if="{{(isRequestSuccess&&isPermission)||(!qrCode)||(!userInfo)}}" style="opacity:0.80" class="buhuo" onTap="opendoor" data-type="1">{{qrCode?(isPermission==1?'开门,先拿后付费':'开门'):'扫一扫'}}</view>
+    <view a:if="{{(isRequestSuccess&&isPermission==1)}}" class='chakan_buhuo' onTap="memberOrDeposi" data-type='1'>开通免密,拿完即走</view>
+    <!-- <view a:elif="{{(qrCode&&!isPermission)}}"></view> -->
+    <!-- <view a:if="{{qrCode&&isRequest}}" class='chakan_buhuo' onTap="gotobuhuo">成为会员</view> -->
+    <swiper a:elif="{{(isRequestSuccess&&!isPermission)}}"  class='swiper' indicator-dots="true" duration='500' indicator-color="white" indicator-active-color="#f5cb45">
+          <block a:for="{{items}}">
+            <swiper-item>
+              <view>
+                <view class='item-title'>{{item.title}}</view>
+                <view class='item-imgbox'>
+                  <image src='{{item.img}}' mode="widthFix"></image>
+                </view>
+                <view class='item-des'>
+                  <view class='des-content'>{{item.des}}</view>
+                  <view class='xieyi' a:if="{{index==1}}">
+                    <view class='icon-box'>
+                      <view class='duigou' onTap="checkboxChange">
+                       <image  a:if="{{checkedValue}}"  src='../../image/notEmpty.png'></image>
+                        <image a:else src='../../image/empty.png'></image>
+
+                        <!-- <text a:if="{{checkedValue}}">✔</text> -->
+                      </view>
+                    </view>
+                    <view class='text' onTap="toAgreement">同意会员协议</view>
+                  </view>
+                </view>
+
+                <view class='item-btnbox'>
+                  <view class='item-btn' a:if="{{item.buttonTitle!=''}}" onTap="memberOrDeposi" data-type='{{item.type}}'>{{item.buttonTitle}}</view>
+                </view>
+
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+    <image src="../../image/my.png" class='my_image' onTap='myClick'></image>
+    <image src="../../image/orderList.png" class='orderList_image' onTap='orderListClick'></image>
+    <label class='my_label'>我</label>
+    <label class='orderList_label'>订单</label>
+  </view>
+
+
+
+<!-- <view class="container">
+  <view a:if="{{condition}}" class='back_view'>
+    <image src="../../image/会员.png" class='icon_image'></image>
+    <label class='welcom_label'>欢迎“丫丫”</label>
+    <label class='prompt_label'>检测到您是本机的补货人员，请选择需要的操作</label>
+    <view style="opacity:1.0" class="buhuo" onTap="opendoor" data-type="2">补货</view>
+    <view class='chakan_buhuo'>查看补货订单</view>
+     <view class='woyaogouwu' onTap="gotopurchase">我要购物</view> 
+     <image src="../../image/my.png" class='my_image' onTap='myClick'></image>
+     <image src="../../image/orderList.png" class='orderList_image' onTap='orderListClick'></image>
+     <label class='my_label'>我</label>
+     <label class='orderList_label'>订单</label>
+  </view> -->
+  <!-- <view a:else="{{!condition}}" class='back_view'> -->
+    <!-- <view class="container"> -->
+    <!-- <view  class='back_view'>
+    <image src={{userInfo.is_ck=='0'?'':'../../image/会员.png'}} class='icon_image'></image>
+    <label class='welcom_label'>{{userInfo?((userInfo.is_ck=='0'?'欢迎“':'欢迎尊贵的路上会员“')+userInfo.nickname +'”'):'欢迎来到“路上美食吧”'}}</label>
+    <view style="opacity:1.0" class="buhuo" onTap="opendoor" data-type="1">{{qrCode?'开门，先拿后付费':'扫码开门'}}</view>
+    <view class='chakan_buhuo' onTap="gotobuhuo">成为会员</view>
+    <image src="../../image/my.png" class='my_image' onTap='myClick'></image>
+    <image src="../../image/orderList.png" class='orderList_image' onTap='orderListClick'></image>
+    <label class='my_label'>我</label>
+    <label class='orderList_label'>订单</label>
+  </view> -->
+<!-- </view> -->

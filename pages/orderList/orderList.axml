@@ -1,0 +1,62 @@
+<!--pages/orderList/orderList.wxml-->
+<view class="container">
+  <view class='header-view' style='display:flex;flex-direction:column;height:49px;'>
+    <view style='display:flex;flex-direction:row;height:47.5px;'>
+      <view class='header-button' style='color:{{list_type=="0"?"#009e96":"#585858"}};' onTap="topClick" data-type="0">全部</view>
+      <view id='' class='header-button' style='color:{{list_type=="0"?"#585858":"#009e96"}};' onTap="topClick" data-type="1">待支付</view>
+    </view>
+    <view class='green-line' style='margin-left:{{list_type=="0"?12.5:62.5}}%;'></view>
+  </view>
+  <view class='line'></view>
+  <scroll-view a:if="{{orderList.length>0}}" scroll-y style="height:{{scroll_height}}px;background-color:white;" lower-threshold='50' onScrollToLower="lowerRefresh">
+    <view class="list" a:for="{{orderList}}" onTap="cellClick" data-index="{{index}}">
+      <view style='display:flex;flex-direction:row;margin:0px'>
+        <image style='margin-left:8px;margin-top:2px;width:25px;height:25px;' a:if="{{item.isCk=='1'}}" src="../../image/yellow_member.png" mode="aspectFit" />
+        <label class='header_title'>{{item.machineName}}</label>
+        <label class='header_status' style='color:{{item.orderState=="7"?"#009e96":"#ff0000"}}'>{{item.orderState=='7'?'已完成':(item.orderState=='4'?'待支付':(item.orderState=='6'?'扣款失败':'支付失败'))}}</label>
+      </view>
+      <view class='line'></view>
+      <view a:if="{{item.machineIndentCountList.length==1}}" style='display:flex;height:{{image_width*0.76+16}}px;flex-direction:row;align-items:center'>
+        <view style='width:{{image_width}}px;height:{{image_width*0.76}}px;margin:8px;'>
+          <image a:if="{{item.machineIndentCountList[0].goodsImage == '' || item.machineIndentCountList[0].goodsImage == null}}" class='item_image' style='width:{{image_width}}px;height:{{image_width*0.76}}px;border-radius:5px;' src='../../image/test.jpg'></image>
+          <image mode='aspectFit' a:elif="{{item.machineIndentCountList[0].goodsImage}}" class='item_image' style='width:{{image_width}}px;height:{{image_width*0.76}}px;border-radius:5px;' src='{{item.machineIndentCountList[0].goodsImage}}'></image>
+        </view>
+        <view style='justify-content:center;display:flex;width:50%;height:{{image_width*0.76}}px;margin:8px;flex-direction:column;'>
+          <label class='goods_info' style='color:#505050;font-size:11pt;'>商品:{{item.machineIndentCountList[0].goodsName}}</label>
+          <label a:if="{{item.isCk=='1'&&item.machineIndentCountList[0].memberPrice}}" class='goods_info' style='margin-top:8px;text-decoration:line-through'>售价:¥{{item.machineIndentCountList[0].goodsOriginal}}</label>
+          <label style='margin-top:8px' class='goods_info'>{{(item.isCk=='1'&&item.machineIndentCountList[0].memberPrice)?('会员价:¥'+item.machineIndentCountList[0].memberPrice):('售价:¥'+item.machineIndentCountList[0].goodsOriginal)}}</label>
+        </view>
+        <view style='width:15%;height:{{image_width*0.76}}px;display:flex;margin:8px;'>
+          <label class='goods_count' style='line-height:{{image_width*0.76}}px'>x{{item.machineIndentCountList[0].goodsNumber}}</label>
+        </view>
+      </view>
+      <scroll-view a:elif="{{item.machineIndentCountList.length>1}}" style="background-color:white;width:100%;height:{{image_width*0.76+16}}px;display:flex;flex-direction:row;white-space:nowrap;" scroll-x="{{true}}">
+        <view a:for="{{item.machineIndentCountList}}" style='width:{{image_width}}px;height:{{image_width*0.76}}px;margin-left:8px;margin-top:8px;margin-bottom:8px;display:inline-block'>
+          <image a:if="{{item.goodsImage == '' || item.goodsImage == null}}" class='item_image' style='width:{{image_width}}px;height:{{image_width*0.76}}px;border-radius:5px;' src='../../image/test.jpg'></image>
+          <image mode='aspectFit' a:elif="{{item.goodsImage}}" class='item_image' style='width:{{image_width}}px;height:{{image_width*0.76}}px;border-radius:5px;' src='{{item.goodsImage}}'></image>
+          <view class='image_goods_count' style='bottom:{{image_width*0.76}}px'>x{{item.goodsNumber}}</view>
+        </view>
+      </scroll-view>
+      <view class='line'></view>
+      <view style='display:flex;width:100%;margin:0px;flex-direction:column;'>
+        <view style='display:flex;width:100%;margin-left:8px;flex-direction:row;'>
+          <view style='display:flex;width:70%;margin-top:0px;flex-direction:column;'>
+            <view class='order-info'>{{"订单编号:"+item.orderNo}}</view>
+            <view class='order-info'>{{"下单时间:"+item.orderTime}}</view>
+          </view>
+          <view a:if="{{item.orderState!='7'}}" class='zhifu-button' catchTap="gotopurchase" data-index="{{index}}">{{item.orderState=='4'?'去支付':'再次支付'}}</view>
+        </view>
+        <view class='order-info' style='margin-left:8px;'>{{'共'+item.goodsNum+'件商品'+' 实付款:¥'+item.payAmount+(item.isCk=='1'&&item.memberReduce?(' 会员已节省¥'+item.memberReduce):'')}}</view>
+      </view>
+      <view class='gray_view'></view>
+    </view>
+  </scroll-view>
+  <view class='nullView' a:elif="{{orderList.length<=0&&isRequest==1}}">
+    <image class='nullImage' src="../../image/carnull.png" mode="aspectFit" />
+  </view>
+  <view class='netErrorView' a:else="{{orderList.length<=0&&isRequest==2}}">
+    <image class='netErrorImage' src="../../image/netError.png" mode="aspectFit" />
+    <view style='margin-top:0px;color:#9B9B9B'>网络连接失败，请稍后重试</view>
+    <view class="reloadButton" onTap="reloadData">重新加载</view>
+  </view>
+</view>

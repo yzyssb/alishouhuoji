@@ -1,0 +1,15 @@
+<view class='limit' >
+    <view class='limit-container'>
+     <view class='top'>
+       <image class='limit-icon' src='../../image/warning.png'></image> 
+        <view class='text'>抱歉,系统检测到您被设置为“限制用户”</view>
+       <view class='text'>无法购物,如有异议请联系客服</view>
+      </view>
+    </view>
+    <view class='custom-service' onTap="callPhone">
+      <image src='../../image/phone.png'></image>
+      <text>{{customerServicePhone}}</text>
+    </view>
+  </view>
+</view>
+<image  class="backgroundImage" src='{{backgroundImage}}'/>

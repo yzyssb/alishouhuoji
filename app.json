@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/oppen-door/oppen-door",
+    "pages/orderDetail/orderDetail",
+    "pages/orderList/orderList",
+    "pages/have-opened/have-opened",
+    "pages/passwordLogin/passwordLogin",
+    "pages/mobileRegister/mobileRegister",
+    "pages/mobileLogin/mobileLogin",
+    "pages/newMobileLogin/newMobileLogin",
+    "pages/machine/machine",
+    "pages/onekeyLogin/onekeyLogin",
+    "pages/my/my",
+    "pages/todos/todos",
+    "pages/add-todo/add-todo",
+    "pages/scan-code/scan-code",
+    "pages/agreement/agreement",
+    "pages/appealList/appealList",
+    "pages/afterSale/afterSale",
+    "pages/limit-user/limit-user"
+  ],
+  "window": {
+    "defaultTitle": "路上会员柜",
+    "titleBarColor": "black"
+  }
+}

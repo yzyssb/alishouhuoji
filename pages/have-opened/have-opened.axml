@@ -1,0 +1,8 @@
+<image  class="backgroundImage" src='{{backgroundImage}}'/>
+
+<view class="container">
+   <image a:if="{{isMember=='true'}}" src='../../image/member.png' class='icon_image' mode='aspectFit'></image>
+   <image a:else src='../../image/icon_right.png' class='icon_right' mode='aspectFit'></image>
+  <view class="toast" >{{message}}</view>
+  <view a:if="{{isMember=='true'}}" class='sub_toast'>{{sub_message}}</view>>
+</view>

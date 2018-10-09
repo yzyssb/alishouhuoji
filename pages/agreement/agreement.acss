@@ -1,0 +1,32 @@
+/* pages/agreement/agreement.wxss */
+
+.agreementBox {
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.type3 {
+  font-weight: 700;
+  font-size: 32rpx;
+  line-height: 50rpx;
+  padding: 20rpx 0;
+}
+
+.type4 {
+  font-size: 32rpx;
+  line-height: 50rpx;
+  padding: 20rpx 0;
+}
+
+.type2 {
+  font-size: 36rpx;
+  line-height: 60rpx;
+  padding: 20rpx 0;
+}
+
+.type1 {
+  font-size: 36rpx;
+  line-height: 60rpx;
+  font-weight: 700;
+  padding: 20rpx 0;
+}

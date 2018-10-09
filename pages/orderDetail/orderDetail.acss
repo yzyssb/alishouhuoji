@@ -1,0 +1,241 @@
+/* pages/orderDetail/orderDetail.wxss */
+.header{
+  background-color: #fff;
+  width: 100%;
+  align-items:center;
+}
+.header_title{
+  margin-left: 8px;
+  margin-top: 5px;
+  font-weight:600;
+  font-size:13pt;
+  /* background-color: #ccc; */
+  width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.header_status{
+  text-align:right;
+   margin-top: 7px; 
+  font-size: 11pt;
+   width: 25%; 
+   position:relative;
+   right:8px;
+  /* float: right;
+   */
+}
+.order_info{
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+  margin-top: 2px;
+  font-size:11pt;
+  color: #a0a0a0;
+  font-weight:500;
+  /* height:18px; */
+}
+.order_info label{
+  margin-top:5px;
+  /* height:18px; */
+}
+.line{
+  margin-top: 8px;
+  background-color: #ddd;
+  width: 100%;
+  height: 0.5px;
+}
+.goods_info{
+  font-size:11pt;
+  color: #a0a0a0;
+  margin: 2px;
+  font-weight:500;
+  /* height:20px; */
+  width:200px;
+  white-space:nowrap;
+}
+.goods_count{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size:10pt;
+  text-align:right;
+  /* background-color: #eee; */
+  width: 100%;
+  color: #a0a0a0;
+}
+.list{
+  display: flex;
+  flex-direction: column;
+}
+.item-total{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin: 8px 8px 0
+}
+.order_totalPrice{
+  /* margin-right: 8px;
+  margin-top: 8px; */
+  font-size:12pt;
+  color: #a0a0a0;
+  font-weight:400;
+  text-align: right;
+}
+.afterSellBtn{
+  width:136rpx;
+  height:56rpx;
+  font-size:26rpx;
+  line-height:56rpx;
+  text-align: center;
+  border: 1rpx solid #000;
+  box-sizing: border-box;
+  border-radius: 5rpx;
+}
+.gray_view{
+  margin-top: 8px;
+  height: 8px;
+  width: 100%;
+  background-color: #EEEEEE;
+}
+.reduce_type{
+  font-size:small;
+  background-color: #E76565;
+  color: #fff;
+  text-align: center;
+  width: 16px;
+  height: 16px;
+  font-size: 9pt;
+  line-height: 16px; 
+}
+.reduce_typeName{
+  margin-left:8px;
+  color: #a0a0a0;
+  font-size: 11pt;
+  height: 18px;
+  /* background-color:red; */
+  width:100px;
+  
+}
+.reduce_count{
+  /* margin-left:17%; */
+  position:absolute;
+  right:8px;
+  width: 40%;
+  color: #bbb;
+  font-size: 11pt;
+  text-align: right;
+  /* position: absolute; */
+  height: 18px;
+  /* background-color:green; */
+}
+.reduce{
+  margin-left: 8px; 
+  margin-top: 8px;
+  color: #bbb;
+  font-size: 12pt;
+  margin-bottom:16px; 
+}
+.bottom_view{
+  height:48.5px;
+  background-color:#F7F7F7;
+  position: fixed;
+  width: 100%;
+  line-height:50px;
+  display: flex;
+  flex-direction:row; 
+  bottom:0px;
+}
+.bottom_line{
+  background-color: #ddd;
+  width: 100%;
+  position: fixed;
+  bottom: 48.5px;
+  height: 1px;
+}
+.buttom_title{
+  height:24px;
+  margin-left:8px;
+  /* width:%; */
+  line-height:33px;
+  text-align: left;
+  color:#009e96;
+  /* background-color: yellow; */
+}
+.buttom_subTitle{
+  height:24px;
+  margin-left:8px;
+  /* width:%; */
+  line-height:17px;
+  text-align: left;
+  color:#aaa;
+  font-size:9pt;
+  /* background-color: orange; */
+}
+.bottom_button{
+  background-color: #009e96;
+  width: 30%;
+  text-align: center;
+  color: white;
+}
+.nullImage{
+  top: 20%;
+  left: 25%;
+  right:25%;
+  width: 50%;
+  height: 40%;
+  position: absolute;
+  /* top: 60px;
+  left: 10%;
+  right:10%;
+  width: 80%;
+  height: 250px;
+  position: absolute; */
+}
+ .nullView{
+   height: 100%;
+  width:100%; 
+  /* background-color:#000; */
+} 
+.repurchase{
+  /* background-color :red; */
+  color:#009e96;
+  top: 60%;
+  margin-left: 15%;
+  width: 70%;
+  height: 40px;
+  line-height:40px;
+  text-align: center;  
+  position: absolute;
+  border-width:0.5px;
+  border-color:#009e96;
+  border-radius: 5px;
+   border-style:solid;
+  }
+  .netErrorImage{
+  margin-top: 40%;
+  width: 100px;
+  height: 100px;
+  /* position: absolute; */
+}
+ .netErrorView{
+   height: 100%;
+  width:100%; 
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content:flex-end;
+  /* background-color:#000; */
+} 
+.reloadButton{
+  /* background-color :red; */
+  color:#009e96;
+  margin-top: 20px;
+  width: 200px;
+  height: 40px;
+  line-height:40px;
+  text-align: center;  
+  border-width:0.5px;
+  border-color:#009e96;
+  border-radius: 5px;
+   border-style:solid;
+}

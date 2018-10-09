@@ -1,0 +1,137 @@
+.weui-navbar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+   position: relative; 
+   z-index: 500; 
+   top: 0; 
+  width: 100%;
+  /* background: #fff; */
+  border-bottom: 1rpx solid #ccc;
+}
+
+.weui-navbar__item {
+  position: relative;
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  height: 80rpx;
+  text-align: center;
+  font-size: 0;
+  line-height: 80rpx;
+}
+.weui-navbar__item{
+color: #000;
+}
+.weui-navbar__item.weui-bar__item_on {
+  color: #00954d;
+  
+}
+.weui-navbar__item.weui-bar__item_on .weui-navbar__title{
+  border-bottom: 1px solid  #00954d;
+}
+.weui-navbar__slider {
+  position: absolute;
+  content: " ";
+  left: 0;
+  bottom: 0;
+  width: 3.5em;
+  height: 5rpx;
+  background-color: #00954d;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.weui-navbar__title {
+  display: inline-block;
+  font-size: 30rpx;
+  max-width: 8em;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  padding: 0 10rpx;
+}
+.myorder-header {
+  width: 100%;
+  background: #fff;
+}
+
+.myorder-title {
+  background: #f4f4f4;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 34rpx;
+  padding: 0px 20rpx;
+}
+.myorder-tab {
+  width: 100%;
+  position: relative;
+}
+/* 列表样式 */
+.order-item{
+  border-bottom: 15rpx solid #eee;
+}
+.item-tit{
+  height: 74rpx;
+  display: flex;
+  align-items: center;
+  border: 1px solid #eee;
+  padding: 0  22rpx;
+  justify-content: space-between
+}
+.machine-name{
+  color: #000;
+  font-weight: 600;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center
+  
+}
+.machine-name text{
+  max-width: 528rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.machine-name image{
+  width: 39rpx;
+  height: 28rpx;
+  margin-right: 6rpx
+}
+.state{
+  font-size: 28rpx;
+  color: #ff2222
+}
+.item-image-list{
+  padding: 36rpx 22rpx;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.item-image-list image{
+  width: 226rpx;
+  height: 170rpx;
+  margin-right: 10rpx;
+}
+.item-image-list image:last-child{
+  margin-right: 0rpx;  
+}
+.item-info{
+  padding: 12rpx 22rpx;
+  border-bottom: 1px solid #eee;
+}
+.info-line{
+  margin-bottom: 24rpx;
+  font-size: 26rpx;
+  display: flex;
+}
+.info-tit{
+  min-width: 132rpx;
+}

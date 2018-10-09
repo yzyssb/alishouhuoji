@@ -1,0 +1,5 @@
+.container{
+    flex: 1;
+    width: fit-content;
+    background-size: cover
+}
